@@ -16,10 +16,9 @@ const SparkLine = ({ currentColor, id, type, height, width, data, color }) => {
       tooltipSettings={{
         visible: true,
         format: '${x} : data ${y}',
-        trackLineSettings:{
-            visible: true,
-            
-        }
+        trackLineSettings: {
+          visible: true,
+        },
       }}
       dataSource={data}
       xName='x'

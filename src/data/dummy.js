@@ -466,6 +466,7 @@ export const customersGrid = [
 ];
 
 export const employeesGrid = [
+  { type: "checkbox", width: "50" },
   {
     headerText: "Employee",
     width: "150",
@@ -894,6 +895,7 @@ export const userProfileData = [
 ];
 
 export const ordersGrid = [
+  { type: "checkbox", width: "50" },
   {
     headerText: "Image",
     template: gridOrderImage,

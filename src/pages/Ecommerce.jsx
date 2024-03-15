@@ -1,19 +1,23 @@
-import { BsCurrencyDollar, BsDot } from 'react-icons/bs';
-import { Stacked, Pie, Button, SparkLine } from '../components';
-import {
-  earningData,
-  SparklineAreaData,
-  ecomPieChartData,
-} from '../data/dummy';
+import { BsDot } from 'react-icons/bs';
+import { Stacked, Button, SparkLine } from '../components';
+import { earningData, SparklineAreaData,dropdownData } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
+import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
+
+
+
+const DropDown = ({ currentMode }) => (
+  <div className="w-28 border-1 border-color px-2 py-1 rounded-md">
+    <DropDownListComponent id="time" fields={{ text: 'Time', value: 'Id' }} style={{ border: 'none', color: (currentMode === 'Dark') && 'white' }} value="1" dataSource={dropdownData} popupHeight="220px" popupWidth="120px" />
+  </div>
+);
 
 const Ecommerce = () => {
-  const {} = useStateContext();
-
+  const { currentColor, currentMode } = useStateContext();
   return (
     <div className='mt-12'>
       <div className='flex flex-wrap lg:flex-nowrap justify-center'>
-        <div className='w-full bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl  lg:w-80 p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center'>
+        <div className='bg-white dark:text-gray-200  dark:bg-secondary-dark-bg h-44 rounded-xl w-full lg:w-80 p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center'>
           <div className='flex justify-between items-center'>
             <div>
               <p className='font-bold text-gray-400'>Earnings</p>
@@ -23,7 +27,7 @@ const Ecommerce = () => {
           <div className='mt-6'>
             <Button
               color='white'
-              bgColor='blue'
+              bgColor={currentColor}
               text='Download'
               borderRadius='10px'
               size='md'
@@ -92,8 +96,8 @@ const Ecommerce = () => {
               </div>
               <div className='mt-5'>
                 <SparkLine
-                  currentColor='blue'
-                  color='blue'
+                  currentColor={currentColor}
+                  color={currentColor}
                   id='line-sparkline'
                   type='Line'
                   height='80px'
@@ -104,14 +108,14 @@ const Ecommerce = () => {
               <div className='mt-10'>
                 <Button
                   color='white'
-                  bgColor='blue'
+                  bgColor={currentColor}
                   text='Dowload Report'
                   borderRadius='10px'
                 />
               </div>
             </div>
             <div>
-              <Stacked width='320px' height='360px' />
+              <Stacked width='320px' height='360px' /> 
             </div>
           </div>
         </div>
